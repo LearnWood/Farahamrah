@@ -1,7 +1,10 @@
+
 const express = require('express');
 const axios = require('axios');
+const cors = require('cors'); // اضافه شده برای حل مشکل CORS
 const app = express();
 
+app.use(cors()); // فعالسازی CORS
 app.use(express.json());
 
 const ACCESS_TOKEN = process.env.ACCESS_TOKEN;
@@ -47,5 +50,5 @@ app.post('/send-whatsapp', async (req, res) => {
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log(`🚀 WhatsApp sender server running on port ${PORT}`);
+  console.log(`🚀 WhatsApp sender server with CORS running on port ${PORT}`);
 });
